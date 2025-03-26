@@ -1,21 +1,88 @@
-///////////////////
-//array
+//////////////////
+// TTL
+
+fn longest<'a>(x:&'a str,y:&'a str)-> &'a str{
+    if x.len() > y.len(){
+        x
+    }else{
+        y
+    }
+}
 
 fn main()
 {
-    let arr1:[i32;5] = [3;5];
-    println!("{:?}",arr1);
-
-    let arr2:[String;9] = std::array::from_fn(|_i| String::from("rust is good~"));
-    println!("{:#?}",arr2);
-
-    let slice = &arr2[2..6];
-    println!("{:#?}",slice);
-
-    loop{
-        println!("I am mad !!!");
+    let x = "FAQ".to_string();
+    let result;
+    {
+        let y = "WHAT".to_string();
+        result = longest(&x, &y);
     }
+    println!("最长的字符串为{}",result);
+
+
 }
+
+
+/////////////////
+//HashMap
+// use std::collections::HashMap;
+
+// fn main()
+// {
+//     let mut scores = HashMap::new();
+//     scores.insert("blue", 10);
+
+//     //覆盖已有的值
+//     let old = scores.insert("blue", 20);
+
+//     let v = scores.entry("yellow").or_insert(50);
+// }
+
+
+//////////////////
+// match
+
+// use std::option;
+
+// enum MyEnum{
+//     Foo,
+//     Bar
+// }
+// fn main()
+// {
+//     let arr = vec![MyEnum::Foo,MyEnum::Bar,MyEnum::Foo];
+//     for _ in arr.iter().filter(|x| matches!(x,MyEnum::Foo))
+//     {
+//         println!("匹配一次");
+//     }
+// }
+
+// fn plus_one(x:Option<i32>)->Option<i32>{
+//     match x{
+//         None =>None,
+//         Some(i)=> Some(i+1),
+//     }
+// }
+
+
+///////////////////
+//array
+
+// fn main()
+// {
+//     let arr1:[i32;5] = [3;5];
+//     println!("{:?}",arr1);
+
+//     let arr2:[String;9] = std::array::from_fn(|_i| String::from("rust is good~"));
+//     println!("{:#?}",arr2);
+
+//     let slice = &arr2[2..6];
+//     println!("{:#?}",slice);
+
+//     loop{
+//         println!("I am mad !!!");
+//     }
+// }
 
 
 //////////////////////
