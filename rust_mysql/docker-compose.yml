@@ -1,0 +1,24 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: "Password!1"
+    volumes:
+      - ./mysql/varlib/:/var/lib/mysql 
+      - ./mysql/initdb:/docker-entrypoint-initdb.d/
+    healthcheck:
+      test: mysql -uroot -pPassword!1 -e 'select 1'
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 7999:3306
+    networks:  # 新增网络配置
+      - rust_net
+
+networks:  # 新增网络定义
+  rust_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16  # 自定义子网
